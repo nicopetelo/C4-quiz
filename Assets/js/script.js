@@ -62,18 +62,22 @@ let quiz = [
             d: "Right"
         }
         // correctAnswer: d
-    },
+    }
 ]
 
 createQuestion = () => {
     for (i = 0; i < quiz.length; i++) {
-        let question = $("<h2></h2>").text(quiz.questions[i]);
-        $(question).append("#questions");
+        question = $("#questions").text(quiz.question[i]);
+        console.log(question);
         for (i = 0; i < answers.length; i++) {
-            let choice = $("<button></button>").text(quiz.answers[i]);
-            $(choice).append("#choices");
+            // let choice = $("<button></button>").text(quiz.answers[i]);
+            choice = $("btn1").click(function(){
+                    $("#choices").text(quiz.answers[i]);
+                });
         }
     }
+    $(question).append("#questions");
+    $(choice).append("#choices");
 }
 
 createQuestion();
