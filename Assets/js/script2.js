@@ -1,5 +1,3 @@
-
-
 // const questionsContainer = $("#questions").class();
 // console.log(questionsContainer);
 
@@ -11,10 +9,7 @@ const clearHighScores = $("#clear-scores");
 
 let finalScore = 0;
 let numCorrect = 0;
-let questionCounter = 0;
-let timeLeft = 0;
 
-let questionCard = [];
 
 
 let quiz = [
@@ -24,8 +19,8 @@ let quiz = [
             "Calculus",
             "Stretching when waking up",
             "Putting socks on",
-            "Foot racing"],
-        correctAnswer: 1
+            "Foot racing"]
+        // correctAnswer: b
     },
     {
         question: "Question 2",
@@ -33,8 +28,8 @@ let quiz = [
             "Right",
             "Wrong",
             "Wrong",
-            "Wrong"],
-        correctAnswer: 0
+            "Wrong"]
+        // correctAnswer: a
     },
     {
         question: "Question 3",
@@ -42,8 +37,8 @@ let quiz = [
             "Wrong",
             "Right",
             "Wrong",
-            "Wrong"],
-        correctAnswer: 1
+            "Wrong"]
+        // correctAnswer: b
     },
     {
         question: "Question 4",
@@ -51,8 +46,8 @@ let quiz = [
             "Wrong",
             "Wrong",
             "Right",
-            "Wrong"],
-        correctAnswer: 2
+            "Wrong"]
+        // correctAnswer: c
     },
     {
         question: "Question 5",
@@ -60,42 +55,31 @@ let quiz = [
             "Wrong",
             "Wrong",
             "Wrong",
-            "Right"],
-        correctAnswer: 3
+            "Right"]
+        // correctAnswer: d
     }
 ]
 
-
-
-function startGame () {
-    
-}
-
-function corrector () {
-    var answerSelected = event.target.getAttribute("answer-id");
-    if (quiz.answers.correctAnswer) {
-
-    }
-}
-
 createQuestion = () => {
+
     for (i = 0; i < quiz.length; i++) {
         selectedQuestion = quiz[i].question;
-        var displayedQuestion = (i + 1) + ". " + selectedQuestion;
-        displayedQuestion.innerHTML = "<h2>" + quiz[i].question + "</h2>"
+        displayedQuestion = (i + 1) + ". " + selectedQuestion;
+        // console.log(displayedQuestion);
+        // $(".questions").append("<div class='question'></div>");
+        $(".questions").append(displayedQuestion);
+        for (j = 0; j < quiz[i].answers.length; j++) {
+            answerOption = quiz[i].answers[j];
+            // console.log(answerOption);
+            choices = $("#" + j).text(quiz[i].answers[j]);
+            // console.log(choices);
 
-        answersEl.innerHTML = "";
-        for (let j = 0; j < quiz[i].answers.length; j++) {
-            // choices = $("#" + j).text(quiz[i].answers[j]);
-            var answerButton = document.createElement("button");
-            answerButton.setAttribute("answer-id", j);
-            answerButton.setAttribute("class", "answer-button");
-            answerButton.innerText = quiz[i].answers[j];
-            $(answerButton).click(corrector());
-            answersEl.appendChild(answerButton);
-        }
-    }
-}    
+            // $(".questions").append(answerOption);
+        };
+        // for (j = 0; j < quiz[i].answers.length; j++) {}
+    };
+    // $(".choices").append(choice);
+}
 
 
 console.log("getting it to display outside log");
@@ -103,5 +87,3 @@ console.log("getting it to display outside log");
 createQuestion();
 
 // $("#final-score").html() = "Your final score was " + finalScore;
-
-$(startButton).click(startGame());
